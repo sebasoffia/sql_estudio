@@ -1,0 +1,10 @@
+SELECT 
+    idusuario, usuario.pais_iso, conexion, usuario.nombre, correo, telefono, fecha_nacimiento, fecha_registro, nacionalidad, acuerdo_marco,
+    region.nombre as nombre_region, comuna.nombre as nombre_comuna
+FROM 
+    capacitacion_usuario 
+LEFT JOIN usuario ON usuario.idusuario = capacitacion_usuario.usuario_idusuario 
+LEFT JOIN comuna ON comuna.idcomuna = usuario.comuna_idcomuna
+LEFT JOIN region ON region.idregion = comuna.region_idregion
+WHERE capacitacion_idcapacitacion IN (437,495,496,497,498,499) 
+AND fecha_registro BETWEEN 20210101 AND 20210324;
