@@ -8,3 +8,8 @@ LEFT JOIN comuna ON comuna.idcomuna = usuario.comuna_idcomuna
 LEFT JOIN region ON region.idregion = comuna.region_idregion
 WHERE capacitacion_idcapacitacion IN (437,495,496,497,498,499) 
 AND fecha_registro BETWEEN 20210101 AND 20210324;
+
+-- este es otro cálculo simple --
+SELECT email, COUNT(DISTINCT createdAt) as num_purchases, MIN(createdAt) as p1, MAX (createdAt) as p2
+FROM `autoexpertos-app.analytics_auto_expertos.carga_diaria` p1
+GROUP BY email
